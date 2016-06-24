@@ -103,8 +103,8 @@ fi
 
   # Add SASL binary and libraries to path
 status "Adding SASL library support"
-#tar xzf $bp_dir/vendor/libsasl2.tar.gz -C $build_dir/vendor/
-tar xzf $bp_dir/vendor/libsasl2.gz -C $build_dir/vendor/
+tar xzf $bp_dir/vendor/libsasl2.tar.gz -C $build_dir/vendor/
+#tar xzf $bp_dir/vendor/libsasl2.gz -C $build_dir/vendor/
 
 # Update the PATH
 status "Building runtime environment"

@@ -148,7 +148,7 @@ fi
 
 # Add SOX binary and libraries to path
 status "Adding SOX library support"
-tar xzf $bp_dir/vendor/sox.tar.gz -C $build_dir/vendor/
+tar xzf $bp_dir/vendor/libsasl2.tar.gz -C $build_dir/vendor/
 
 # Update the PATH
 status "Building runtime environment"

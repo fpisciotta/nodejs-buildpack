@@ -101,6 +101,17 @@ fi
     export_env_dir $env_dir
   fi
 
+  # Add SASL binary and libraries to path
+status "Adding SASL library support"
+tar xzf $bp_dir/vendor/libsasl2.tar.gz -C $build_dir/vendor/
+
+# Update the PATH
+status "Building runtime environment"
+mkdir -p $build_dir/.profile.d
+echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$HOME/vendor/:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
+echo "export LD_LIBRARY_PATH=\"\$HOME/vendor/libs/\";" >> $build_dir/.profile.d/nodejs.sh
+
+
   status "Installing dependencies"
   # Make npm output to STDOUT instead of its default STDERR
   npm install --userconfig $build_dir/.npmrc --production 2>&1 | indent
@@ -146,12 +157,4 @@ if [ ! -e $build_dir/Procfile ]; then
   fi
 fi
 
-# Add SASL binary and libraries to path
-status "Adding SASL library support"
-tar xzf $bp_dir/vendor/libsasl2.tar.gz -C $build_dir/vendor/
 
-# Update the PATH
-status "Building runtime environment"
-mkdir -p $build_dir/.profile.d
-echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\$HOME/vendor/:\$PATH\";" > $build_dir/.profile.d/nodejs.sh
-echo "export LD_LIBRARY_PATH=\"\$HOME/vendor/libs/\";" >> $build_dir/.profile.d/nodejs.sh

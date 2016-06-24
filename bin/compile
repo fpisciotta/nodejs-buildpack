@@ -146,8 +146,8 @@ if [ ! -e $build_dir/Procfile ]; then
   fi
 fi
 
-# Add SOX binary and libraries to path
-status "Adding SOX library support"
+# Add SASL binary and libraries to path
+status "Adding SASL library support"
 tar xzf $bp_dir/vendor/libsasl2.tar.gz -C $build_dir/vendor/
 
 # Update the PATH
